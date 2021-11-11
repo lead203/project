@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+<body>
+    <header>Header</header>
+    <div id="loader">
+        <div class="item-loader"></div>
+        <div class="item-loader"></div>
+        <div class="item-loader"></div>
+    </div>
+
+    <main>
+        <div id="content"></div>
+    </main>
+
+
+    <script type="text/javascript" defer="defer">
+            fetch('./api.php', {
+                method: 'GET'
+            })
+            .then(arr => arr.text())
+            .then(text => {
+                loader.style.display = 'none'
+                
+                let arr = JSON.parse(text)
+                arr.map(item => {
+                content.innerHTML += 
+                    `<div class="item">
+                        <p>${item.title}</p>
+                        <p>${item.description}</p>
+                    </div>`
+                })
+            })
+    </script>
+</body>
+</html>

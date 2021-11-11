@@ -11,3 +11,4 @@
 			$this->view->render('Main page', $vars);
 		}
 	}
+
